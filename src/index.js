@@ -13,11 +13,14 @@ inputEl.addEventListener(
   'input',
   debounce(handleCountrySearch, DEBOUNCE_DELAY)
 );
+let name = '';
 
-function handleCountrySearch() {
-  return fetch(`https://restcountries.com/v3.1/name/Spain`)
+function handleCountrySearch(e) {
+  name = e.target.value;
+  // console.log(name);
+  return fetch(`https://restcountries.com/v3.1/name/${name}`)
     .then(responce => {
       return responce.json();
     })
-    .then(data => console.log(data[0].name.common));
+    .then(data => console.log({ data }));
 }
