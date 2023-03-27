@@ -22,10 +22,11 @@ function handleSearchQuery(e) {
     .fetchResult()
     .then(data => {
       if (data.length > 10) {
-        cleanPreviouesCountries();
         Notify.info(
           'Too many matches found. Please enter a more specific name.'
         );
+        cleaListOfCountries();
+        clearInfoCardOfCountry();
       }
       if (data.length > 1 && data.length <= 10) {
         listOfCountries.innerHTML = listRenderCountries(data);
