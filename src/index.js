@@ -28,12 +28,12 @@ function handleSearchQuery(e) {
         );
       }
       if (data.length > 1 && data.length <= 10) {
-        clearInfoCardOfCountry();
         listOfCountries.innerHTML = listRenderCountries(data);
+        clearInfoCardOfCountry();
       }
       if (data.length === 1) {
-        cleaListOfCountries();
         countryIformation.innerHTML = renderCountryInfo(data);
+        cleaListOfCountries();
       }
     })
     .catch(error => {
