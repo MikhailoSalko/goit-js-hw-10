@@ -17,8 +17,7 @@ function handleSearchQuery(e) {
     .fetchResult()
     .then(data => {
       if (data.length > 10) {
-        listOfCountries.innerHTML = '';
-        countryIformation.innerHTML = '';
+        cleanPreviouesCountries();
         Notify.info(
           'Too many matches found. Please enter a more specific name.'
         );
@@ -37,8 +36,7 @@ function handleSearchQuery(e) {
         listOfCountries.innerHTML = '';
         return;
       }
-      listOfCountries.innerHTML = '';
-      countryIformation.innerHTML = '';
+      cleanPreviouesCountries();
       Notify.failure('Oops, there is no country with that name');
     });
 }
@@ -78,4 +76,9 @@ function renderCountryInfo(arr) {
     .join('');
 
   return cardMarkup;
+}
+
+function cleanPreviouesCountries() {
+  listOfCountries.innerHTML = '';
+  countryIformation.innerHTML = '';
 }
